@@ -16,9 +16,9 @@ const Carttoggle = (props) => {
       <FaShoppingCart alt='carticon'/>
       Cart (0)
       </Button>
-      <Offcanvas show={show} onHide={handleClose} {...props}>
-        <Offcanvas.Header className='text-center' closeButton>
-          <Offcanvas.Title>Cart</Offcanvas.Title>
+      <Offcanvas show={show} placement='end' onHide={handleClose} {...props}>
+        <Offcanvas.Header closeButton>
+          <h4 className='text-center'>Cart</h4>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Cartelements/>
