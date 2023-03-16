@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const Productsdata = () => {
@@ -32,26 +31,44 @@ const Productsdata = () => {
         imageUrl:
           "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
       },
+      {
+        id:5,
+        title: "Blue Color",
+        price: 100,
+        imageUrl:
+          "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+      },
+      {
+        id:6,
+        title: "Blue Color",
+        price: 100,
+        imageUrl:
+          "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+      },
     ];
   return (
-    <div className='row'>
-        <h2 className='bg-dark text-light p-2 m-2'>Products</h2>
+    <div className="row p-0 m-0">
+      <h2 className="bg-dark text-light p-2 mt-2 mb-2 text-center">Products</h2>
       {productsArr.map((products) => {
         return (
-        <Card style={{ width: '18rem' }} className='col p-0 m-2' key={products.id}>
-      <Card.Img variant="top" src={products.imageUrl} />
-      <Card.Body>
-        <Card.Title>{products.title}</Card.Title>
-        <Card.Text>
-        Rs.{products.price}/-
-        </Card.Text>
-        <Button variant="primary">Add toCart</Button>
-      </Card.Body>
-    </Card>
-        )
+          <Card
+            style={{ width: "18rem" }}
+            className="col p-0 m-2"
+            key={products.id}
+          >
+            <img src={products.imageUrl} alt={products.title}/>
+            <div className="p-2">
+              <h6>{products.title}</h6>
+              <h5>Rs.{products.price}/-</h5>
+              <button className="bg-primary text-white border-0 rounded p-2">
+                Add to Cart
+              </button>
+            </div>
+          </Card>
+        );
       })}
     </div>
-  )
+  );
 }
 
 export default Productsdata

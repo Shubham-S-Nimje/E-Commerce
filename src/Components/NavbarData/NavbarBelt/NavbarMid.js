@@ -4,7 +4,7 @@ import search from '../../../Assets/search.svg'
 
 const NavbarMid = () => {
   return (
-    <Form className="d-flex p-0 m-0 border-0 rounded">
+    <Form className="d-flex p-0 m-0 border-0 rounded ">
       <select className='bg-light border-0' id="navbarScrollingDropdown">
               <option href="#action1">Amazon Fashion</option>
               <option href="#action2">Amazon Fashion</option>

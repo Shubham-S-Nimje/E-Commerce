@@ -1,15 +1,17 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
-import { FaShoppingCart, FaFlag } from 'react-icons/fa';
+import { FaFlag } from 'react-icons/fa';
+import Carttoggle from '../../CartData/Carttoggle';
+
 
 const NavbarRight = () => {
+  
   return (
     <section className='row'>
       <div className='col-1 p-1'>
         <FaFlag/>
       </div>
 
-      <div className='col px-3'>
+      <div className='col-5 px-3'>
       <span className='row'>
       Hello, sign in
       </span>
@@ -18,7 +20,7 @@ const NavbarRight = () => {
       </span>
       </div>
 
-      <div className='col px-3'>
+      <div className='col-3 px-3'>
       <span className='row'>
       Returns
       </span>
@@ -26,11 +28,9 @@ const NavbarRight = () => {
       & Orders
       </span>
       </div>
-
-      <Button className='col btn btn-dark p-1'>
-      <FaShoppingCart alt='carticon'/> Cart (0)
-       
-      </Button>
+      <div className='col-3 px-3'>
+      <Carttoggle/>
+      </div>
     </section>
   )
 }
