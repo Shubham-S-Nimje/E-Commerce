@@ -8,9 +8,7 @@ function App() {
     <div className="App container">
       <NavbarData/>
       <Carouseldata/>
-      <div className='row'>
       <Productsdata/>
-      </div>
     </div>
   );
 }
