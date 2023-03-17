@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
+import Productslist from './Productslist';
 
 const Productsdata = () => {
     const productsArr = [
@@ -46,6 +47,7 @@ const Productsdata = () => {
           "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
       },
     ];
+
   return (
     <div className="row p-0 m-0">
       <h2 className="bg-dark text-light p-2 mt-2 mb-2 text-center">Products</h2>
@@ -56,14 +58,13 @@ const Productsdata = () => {
             className="col p-0 m-2"
             key={products.id}
           >
-            <img src={products.imageUrl} alt={products.title}/>
-            <div className="p-2">
-              <h6>{products.title}</h6>
-              <h5>Rs.{products.price}/-</h5>
-              <button className="bg-primary text-white border-0 rounded p-2">
-                Add to Cart
-              </button>
-            </div>
+            <Productslist
+            id={products.id}
+            title={products.title}
+            imageUrl={products.imageUrl}
+            price={products.price}>
+              {productsArr}
+            </Productslist>
           </Card>
         );
       })}

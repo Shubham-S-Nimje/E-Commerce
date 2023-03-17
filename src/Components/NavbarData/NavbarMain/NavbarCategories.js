@@ -14,9 +14,9 @@ const NavbarCategories = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Store</Nav.Link>
-            <Nav.Link href="#action3">About</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/store">Store</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
             <NavDropdown title="Dropdown" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action1">Option 1</NavDropdown.Item>
               <NavDropdown.Item href="#action2">Option 2</NavDropdown.Item>

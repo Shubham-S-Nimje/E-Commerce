@@ -1,16 +1,25 @@
-import Carouseldata from './Components/CarouselData/Carouseldata';
 import NavbarData from './Components/NavbarData/NavbarData';
-import Productsdata from './Components/Products/Productsdata';
 import Footer from './Components/Footer/Footer';
+import ContextProvider from './Components/Store/ContextProvider';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import About from './Pages/About';
+import Home from './Pages/Home';
+import Store from './Pages/Store';
 
+const router = createBrowserRouter([
+  {path: '/', element: <Home/>},
+  {path: '/about', element: <About/>},
+  {path: '/store', element: <Store/>},
+])
 function App() {
   return (
+    <ContextProvider>
     <div className="container">
       <NavbarData/>
-      <Carouseldata/>
-      <Productsdata/>
+      <RouterProvider router={router}/>
       <Footer/>
     </div>
+    </ContextProvider>
   );
 }
 
