@@ -3,12 +3,15 @@ import StoreProducts from './StoreProducts';
 
 const Store = () => {
   const [products, setProducts] = useState('')
+  const [isLoading, SetisLoading] = useState(false)
+
   const hasdata = products.length > 0;
 
   async function FetchApiProductsHandler () {
+    SetisLoading(true)
     const response = await fetch('https://swapi.dev/api/films')
     const data = await response.json();
-    
+
     const transformProducts = data.results.map(ProductsData => {
       return {
       id: ProductsData.episode_id,
@@ -17,6 +20,7 @@ const Store = () => {
       }
     });
     setProducts(transformProducts);
+  SetisLoading(false)
   }
   return (
     <>
@@ -30,7 +34,11 @@ const Store = () => {
       </div>
       <h2 className="bg-dark text-light p-2 mt-2 mb-2 text-center">Products</h2>
       <button className="btn btn-warning mb-2" onClick={FetchApiProductsHandler}>Refresh</button>
-      {hasdata && <StoreProducts products={products} />}
+      <section>
+      {hasdata && (!isLoading ? 
+      <StoreProducts products={products} />:
+      <h2 className="p-2 mt-2 mb-2 text-center">Products Loading...</h2>)}
+      </section>
     </>
   );
 }
