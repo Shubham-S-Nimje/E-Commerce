@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import StoreProducts from './StoreProducts';
 
 
@@ -8,17 +8,20 @@ const Store = () => {
   const [isLoading, SetisLoading] = useState(false)
   const [isfetching, Setisfetsing] = useState(false)
   const [error, Seterror] = useState(null)
-  const [cancel, setcancel] = useState(true)
+  // const [cancel, setcancel] = useState(true)
 
   const hasdata = products.length > 0;
 
+  useEffect(() => {
+    FetchApiProductsHandler();
+  },[])
   async function FetchApiProductsHandler () {
     Setisfetsing(true)
     SetisLoading(true)
     Seterror(null);
 
     try {
-      const response = await fetch('https://swapi.dev/api/film/')
+      const response = await fetch('https://swapi.dev/api/films/')
 
       if(!response.ok){
         timer =  setTimeout(() => {
@@ -47,6 +50,8 @@ const Store = () => {
     clearTimeout(timer)
   }
 
+  
+
   return (
     <>
     <div className="about-section bg-warning text-center p-5 m-2">
@@ -60,11 +65,25 @@ const Store = () => {
       <h2 className="bg-dark text-light p-2 mt-2 mb-2 text-center">Products</h2>
       <button className="btn btn-warning mb-2" onClick={FetchApiProductsHandler}>Refresh</button>
       <section>
+
       {hasdata && (!isLoading ? 
       <StoreProducts products={products} />:
-      <h2 className="p-2 mt-2 mb-2 text-center">Products Loading...</h2>)}
+      <div className="text-center">
+      <div className="spinner-border text-warning" role="status">
+        <span className="sr-only"/>
+      </div>
+      <h2 className="p-2 mt-2 mb-2 text-center">Products Loading...</h2>
+      </div>)}
+
       {!hasdata && (isfetching && isLoading ? 
-      <h2 className="p-2 mt-2 mb-2 text-center">Fetching data from server...</h2>: '')}
+      <div className="text-center">
+      <div className="spinner-border text-warning" role="status">
+        <span className="sr-only"/>
+      </div>
+      <h2 className="p-2 mt-2 mb-2 text-center">Fetching data from server...</h2>
+    </div>
+      : '')}
+
       {!hasdata && error &&
       <h2 className="p-2 mt-2 mb-2 text-center">No Data Found</h2>}
       {!isLoading && error && 
