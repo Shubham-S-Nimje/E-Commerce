@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import MovieInputForm from '../Components/MovieInputForm/MovieInputForm';
 import StoreProducts from './StoreProducts';
 
 
@@ -12,16 +13,13 @@ const Store = () => {
 
   const hasdata = products.length > 0;
 
-  useEffect(() => {
-    FetchApiProductsHandler();
-  },[])
-  async function FetchApiProductsHandler () {
+  const FetchApiProductsHandler = useCallback(async () => {
     Setisfetsing(true)
     SetisLoading(true)
     Seterror(null);
 
     try {
-      const response = await fetch('https://swapi.dev/api/films/')
+      const response = await fetch('https://react-ecommerce-5db66-default-rtdb.firebaseio.com/products.json')
 
       if(!response.ok){
         timer =  setTimeout(() => {
@@ -30,27 +28,54 @@ const Store = () => {
         throw new Error('Something went wrong ...Retrying')
       }
       const data = await response.json();
-      const transformProducts = data.results.map(ProductsData => {
-        return {
-        id: ProductsData.episode_id,
-        title: ProductsData.title,
-        date: ProductsData.release_date,
-        }
-      });
-      setProducts(transformProducts);
+      
+      const loadProduct = [];
+
+      for (const key in data) {
+        loadProduct.push({
+          id: key,
+          IdNumber: data[key].IdNumber,
+          ProductName: data[key].ProductName,
+          PriceChange: data[key].PriceChange
+        })
+      }
+
+      // const transformProducts = data.map(ProductsData => {
+      //   return {
+      //   id: ProductsData.episode_id,
+      //   MovieName: ProductsData.title,
+      //   date: ProductsData.release_date,
+      //   }
+      // });
+      
+      setProducts(loadProduct);
       Setisfetsing(false)
     }
     catch (error) {
       Seterror(error.message);
     }
     SetisLoading(false)
+  },[])
+
+  useEffect(() => {
+    FetchApiProductsHandler();
+  },[FetchApiProductsHandler])
+
+  async function addMovieHandler(product) {
+    const response = await fetch('https://react-ecommerce-5db66-default-rtdb.firebaseio.com/products.json', {
+      method: 'POST',
+      body: JSON.stringify(product),
+      headers: {
+        'Content-type': 'application/jason'
+      }
+    });
+    const data = await response.json();
+    console.log(data);
   }
 
   const CancelHandler = () => {
     clearTimeout(timer)
   }
-
-  
 
   return (
     <>
@@ -62,12 +87,16 @@ const Store = () => {
           way.
         </p>
       </div>
+
+      <MovieInputForm addProduct={addMovieHandler}/>
+
       <h2 className="bg-dark text-light p-2 mt-2 mb-2 text-center">Products</h2>
       <button className="btn btn-warning mb-2" onClick={FetchApiProductsHandler}>Refresh</button>
       <section>
 
       {hasdata && (!isLoading ? 
       <StoreProducts products={products} />:
+
       <div className="text-center">
       <div className="spinner-border text-warning" role="status">
         <span className="sr-only"/>
