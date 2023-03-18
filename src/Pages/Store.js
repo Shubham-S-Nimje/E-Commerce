@@ -4,24 +4,29 @@ import StoreProducts from './StoreProducts';
 const Store = () => {
   const [products, setProducts] = useState('')
   const [isLoading, SetisLoading] = useState(false)
+  const [isfetching, Setisfetsing] = useState()
 
   const hasdata = products.length > 0;
 
   async function FetchApiProductsHandler () {
-    SetisLoading(true)
+    Setisfetsing(true)
     const response = await fetch('https://swapi.dev/api/films')
     const data = await response.json();
-
-    const transformProducts = data.results.map(ProductsData => {
-      return {
-      id: ProductsData.episode_id,
-      title: ProductsData.title,
-      date: ProductsData.release_date,
-      }
-    });
-    setProducts(transformProducts);
-  SetisLoading(false)
+    SetisLoading(true)
+    setTimeout(() => {
+      const transformProducts = data.results.map(ProductsData => {
+        return {
+        id: ProductsData.episode_id,
+        title: ProductsData.title,
+        date: ProductsData.release_date,
+        }
+      });
+      setProducts(transformProducts);
+      SetisLoading(false)
+      Setisfetsing(false)
+    }, 3000);
   }
+
   return (
     <>
     <div className="about-section bg-warning text-center p-5 m-2">
@@ -38,6 +43,8 @@ const Store = () => {
       {hasdata && (!isLoading ? 
       <StoreProducts products={products} />:
       <h2 className="p-2 mt-2 mb-2 text-center">Products Loading...</h2>)}
+      {!hasdata && (isfetching ? 
+      <h2 className="p-2 mt-2 mb-2 text-center">Fetching data from server...</h2>: '')}
       </section>
     </>
   );
