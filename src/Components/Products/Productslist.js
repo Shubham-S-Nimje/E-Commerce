@@ -37,7 +37,7 @@ const Productslist = (props) => {
         <h5>Rs.{price}/-</h5>
         <button
           onClick={AddToCartHandler}
-          className="bg-primary text-white border-0 rounded p-2 "
+          className="btn btn-warning m-2"
         >
           Add to Cart
         </button>

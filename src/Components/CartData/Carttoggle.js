@@ -68,7 +68,7 @@ const Carttoggle = (props) => {
         <hr />
         <h4 className='text-center'>Total: Rs.{cartctx.totalAmount}/-</h4>
         <hr />
-        <button className="bg-dark text-white border-0 rounded p-2 m-2">
+        <button className="btn btn-warning m-2">
           Purchase
         </button>
       </Offcanvas>

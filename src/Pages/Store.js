@@ -5,12 +5,10 @@ const Store = () => {
   const [products, setProducts] = useState('')
   const hasdata = products.length > 0;
 
-  const FetchApiProductsHandler = () => {
-    fetch('https://swapi.dev/api/films')
-    .then(response => {
-      return response.json();
-  })
-  .then(data => {
+  async function FetchApiProductsHandler () {
+    const response = await fetch('https://swapi.dev/api/films')
+    const data = await response.json();
+    
     const transformProducts = data.results.map(ProductsData => {
       return {
       id: ProductsData.episode_id,
@@ -19,7 +17,6 @@ const Store = () => {
       }
     });
     setProducts(transformProducts);
-      });
   }
   return (
     <>
