@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import StoreProducts from './StoreProducts';
 
 const Store = () => {
+  const [products, setProducts] = useState('')
+  const hasdata = products.length > 0;
+
+  const FetchApiProductsHandler = () => {
+    fetch('https://swapi.dev/api/films')
+    .then(response => {
+      return response.json();
+  })
+  .then(data => {
+    const transformProducts = data.results.map(ProductsData => {
+      return {
+      id: ProductsData.episode_id,
+      title: ProductsData.title,
+      date: ProductsData.release_date,
+      }
+    });
+    setProducts(transformProducts);
+      });
+  }
   return (
     <>
-      <div className="about-section bg-warning text-center p-5">
+    <div className="about-section bg-warning text-center p-5 m-2">
         <h1>Store Page</h1>
         <p>Some text about who we are and what we do.</p>
         <p>
@@ -11,79 +31,9 @@ const Store = () => {
           way.
         </p>
       </div>
-      <h2 className="text-center">TOURS</h2>
-      <table className="table container text-center">
-        <thead>
-          <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Place</th>
-            <th scope="col">Music</th>
-            <th scope="col">Buy option</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">JUL16</th>
-            <td>DETROIT, MI</td>
-            <td>DTE ENERGY MUSIC THEATRE</td>
-            <td>
-              <button className="buy-btn bg-dark text-white rounded">
-                BUY TICKETS
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">JUL19</th>
-            <td>TORONTO,ON</td>
-            <td>DBUDWEISER STAGE</td>
-            <td>
-              <button className="buy-btn bg-dark text-white rounded">
-                BUY TICKETS
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th className="tour-date">JUL 22</th>
-            <td> BRISTOW, VA</td>
-            <td>JIGGY LUBE LIVE</td>
-            <td>
-              <button className="buy-btn bg-dark text-white rounded">
-                BUY TICKETS
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th className="tour-date">JUL 29</th>
-            <td>PHOENIX, AZ</td>
-            <td> AK-CHIN PAVILION</td>
-            <td>
-              <button className="buy-btn bg-dark text-white rounded">
-                BUY TICKETS
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th className="tour-date">AUG 2</th>
-            <td className="tour-place">LAS VEGAS, NV</td>
-            <td className="tour-spec-place">T-MOBILE ARENA</td>
-            <td>
-              <button className="buy-btn bg-dark text-white rounded">
-                BUY TICKETS
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <th className="tour-date">AUG 7</th>
-            <td>CONCORD, CA</td>
-            <td>CONCORD PAVILION</td>
-            <td>
-              <button className="buy-btn bg-dark text-white rounded">
-                BUY TICKETS
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <h2 className="bg-dark text-light p-2 mt-2 mb-2 text-center">Products</h2>
+      <button className="btn btn-warning mb-2" onClick={FetchApiProductsHandler}>Refresh</button>
+      {hasdata && <StoreProducts products={products} />}
     </>
   );
 }
