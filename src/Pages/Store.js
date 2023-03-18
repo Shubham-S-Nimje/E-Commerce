@@ -1,19 +1,32 @@
 import React, { useState } from 'react'
 import StoreProducts from './StoreProducts';
 
+
+let timer;
 const Store = () => {
   const [products, setProducts] = useState('')
   const [isLoading, SetisLoading] = useState(false)
-  const [isfetching, Setisfetsing] = useState()
+  const [isfetching, Setisfetsing] = useState(false)
+  const [error, Seterror] = useState(null)
+  const [cancel, setcancel] = useState(true)
 
   const hasdata = products.length > 0;
 
   async function FetchApiProductsHandler () {
     Setisfetsing(true)
-    const response = await fetch('https://swapi.dev/api/films')
-    const data = await response.json();
     SetisLoading(true)
-    setTimeout(() => {
+    Seterror(null);
+
+    try {
+      const response = await fetch('https://swapi.dev/api/film/')
+
+      if(!response.ok){
+        timer =  setTimeout(() => {
+          FetchApiProductsHandler()
+        }, 3000);
+        throw new Error('Something went wrong ...Retrying')
+      }
+      const data = await response.json();
       const transformProducts = data.results.map(ProductsData => {
         return {
         id: ProductsData.episode_id,
@@ -22,9 +35,16 @@ const Store = () => {
         }
       });
       setProducts(transformProducts);
-      SetisLoading(false)
       Setisfetsing(false)
-    }, 3000);
+    }
+    catch (error) {
+      Seterror(error.message);
+    }
+    SetisLoading(false)
+  }
+
+  const CancelHandler = () => {
+    clearTimeout(timer)
   }
 
   return (
@@ -43,8 +63,15 @@ const Store = () => {
       {hasdata && (!isLoading ? 
       <StoreProducts products={products} />:
       <h2 className="p-2 mt-2 mb-2 text-center">Products Loading...</h2>)}
-      {!hasdata && (isfetching ? 
+      {!hasdata && (isfetching && isLoading ? 
       <h2 className="p-2 mt-2 mb-2 text-center">Fetching data from server...</h2>: '')}
+      {!hasdata && error &&
+      <h2 className="p-2 mt-2 mb-2 text-center">No Data Found</h2>}
+      {!isLoading && error && 
+      <h2 className="p-2 mt-2 mb-2 text-center">{error}<br/>
+      <button className="btn btn-warning m-2"
+      onClick={CancelHandler}>
+        Cancel</button></h2>}
       </section>
     </>
   );
