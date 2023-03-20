@@ -26,6 +26,10 @@ const MovieInputForm = (props) => {
             PriceChange: Pricechange
         }
         props.addProduct(product);
+
+        SetIdnumber('')
+        SetProductname('')
+        SetPricechange('')
     }
 
   return (
