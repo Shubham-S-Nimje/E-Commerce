@@ -33,35 +33,38 @@ const MovieInputForm = (props) => {
     }
 
   return (
-    <form className="container text-center p-2" onSubmit={OnSubmitHandler}>
+    <form className="container form-control text-center p-2" onSubmit={OnSubmitHandler}>
       <h2 className="bg-dark text-white p-2 text-center">Add Product Data</h2>
       <div className="row m-2 text-center">
         <label className="row">Enter Unique id :</label>
         <input
-          className="col-3 rounded"
+          className="form-control col-3"
           type="number"
           onChange={IdChangeHandler}
           value={IdNumber}
+          required
         />
       </div>
 
       <div className="row m-2">
         <label className="row">Enter Product Name :</label>
         <input
-          className="col-3 rounded"
+          className="form-control col-3"
           type="text"
           onChange={ProductNameChangeHandler}
           value={Productname}
+          required
         />
       </div>
 
       <div className="row m-2">
         <label className="row">Enter Price :</label>
         <input
-          className="col-3 rounded"
+          className="form-control col-3"
           type="number"
           onChange={PriceChangeHandler}
           value={Pricechange}
+          required
         />
       </div>
 

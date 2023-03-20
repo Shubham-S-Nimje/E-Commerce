@@ -1,9 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import MovieInputForm from '../Components/MovieInputForm/MovieInputForm';
+import LoaderData from '../../Assets/LoaderData';
+import MovieInputForm from './InputForm';
+import StoreCorouselData from './StoreCorouselData';
+import StoreProductList from './StoreProductList';
 
 
 let timer;
-const Store = () => {
+const StorePage = () => {
   const [products, setProducts] = useState('')
   const [isLoading, SetisLoading] = useState(false)
   const [isfetching, Setisfetsing] = useState(false)
@@ -47,11 +50,11 @@ const Store = () => {
       // });
       
       setProducts(loadProduct);
+      Setisfetsing(false)
     }
     catch (error) {
       Seterror(error.message);
     }
-    Setisfetsing(false)
   },[])
 
   useEffect(() => {
@@ -107,24 +110,21 @@ const Store = () => {
 
   const CancelHandler = () => {
     clearTimeout(timer)
-    console.log('Refresh Canced')
+    console.log('Refresh Canceled')
   }
 
   const RefreshProductsHandler = () => {
-    FetchApiProductsHandler()
+    FetchApiProductsHandler();
+    setTimeout(() => {
+      SetisLoading(false)
+    }, 500);
+    SetisLoading(true)
     console.log('Data Refreshed')
   }
 
   return (
     <>
-      <div className="about-section bg-warning text-center p-5 m-2">
-        <h1>Store Page</h1>
-        <p>Some text about who we are and what we do.</p>
-        <p>
-          Resize the browser window to see that this page is responsive by the
-          way.
-        </p>
-      </div>
+      <StoreCorouselData/>
 
       <MovieInputForm addProduct={addMovieHandler} />
 
@@ -135,6 +135,14 @@ const Store = () => {
       >
         Refresh
       </button>
+      
+      {isLoading && (
+            <div className="text-center">
+              <LoaderData/>
+              <h2 className="p-2 mt-2 mb-2 text-center">Products Loading...</h2>
+            </div>
+          )}
+          
       <section>
         <table className="table container text-center">
           <thead>
@@ -148,40 +156,20 @@ const Store = () => {
 
           {hasdata && (
             products.map((data) => (
-              <tbody key={data.id}>
-                <tr>
-                  <th scope="row">{data.IdNumber}</th>
-                  <td>{data.ProductName}</td>
-                  <td>Rs. {data.PriceChange} /-</td>
-                  <td>
-                    <button
-                      className="btn btn-warning mb-2"
-                      value={data.id}
-                      onClick={DeleteDataHandler}
-                    >
-                      Remove
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <StoreProductList
+              key={data.id}
+              id={data.id} IdNumber= {data.IdNumber} ProductName={data.ProductName} 
+              PriceChange={data.PriceChange}
+              value={data.id}
+              DeleteData={DeleteDataHandler}/>
             ))
-          )}
-          {isLoading && (
-            <div className="text-center">
-              <div className="spinner-border text-warning" role="status">
-                <span className="sr-only" />
-              </div>
-              <h2 className="p-2 mt-2 mb-2 text-center">Products Loading...</h2>
-            </div>
           )}
         </table>
 
         {!hasdata && !error &&
           (isfetching ? (
             <div className="text-center">
-              <div className="spinner-border text-warning" role="status">
-                <span className="sr-only" />
-              </div>
+              <LoaderData/>
               <h2 className="p-2 mt-2 mb-2 text-center">
                 Fetching data from server...
               </h2>
@@ -204,4 +192,4 @@ const Store = () => {
   );
 }
 
-export default Store
+export default StorePage

@@ -11,7 +11,6 @@ const NavbarCategories = () => {
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
@@ -20,9 +19,9 @@ const NavbarCategories = () => {
             <NavDropdown title="Dropdown" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action1">Option 1</NavDropdown.Item>
               <NavDropdown.Item href="#action2">Option 2</NavDropdown.Item>
-              <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">Option 2</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/contactus">Contact us</Nav.Link>
           </Nav>
         </Navbar.Collapse>
         </>

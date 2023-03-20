@@ -4,12 +4,14 @@ import ContextProvider from './Components/Store/ContextProvider';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import About from './Pages/About';
 import Home from './Pages/Home';
-import Store from './Pages/Store';
+import StorePage from './Pages/StorePage/StorePage';
+import Contactus from './Pages/ContactPage/Contactus';
 
 const router = createBrowserRouter([
   {path: '/', element: <Home/>},
   {path: '/about', element: <About/>},
-  {path: '/store', element: <Store/>},
+  {path: '/store', element: <StorePage/>},
+  {path: '/contactus', element: <Contactus/>},
 ])
 function App() {
   return (
