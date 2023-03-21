@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Productslist from './Productslist';
 
 const Productsdata = () => {
+
     const productsArr = [
       {
         id:1,
@@ -48,14 +49,17 @@ const Productsdata = () => {
       },
     ];
 
+
   return (
+    <>
     <div className="row p-0 m-0">
       <h2 className="bg-dark text-light p-2 mt-2 mb-2 text-center">Products</h2>
+      </div>
+      <div className="row row-cols-2 p-0 m-0">
       {productsArr.map((products) => {
         return (
           <Card
-            style={{ width: "18rem" }}
-            className="col p-0 m-2"
+            className="col-lg p-2 m-0 text-center border-0"
             key={products.id}
           >
             <Productslist
@@ -68,8 +72,9 @@ const Productsdata = () => {
           </Card>
         );
       })}
-    </div>
-  );
+      </div>
+      </>
+  )
 }
 
 export default Productsdata

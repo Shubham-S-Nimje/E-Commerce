@@ -6,7 +6,7 @@ const NavbarLeft = () => {
   return (
     <section className='row'>
       <div className='col-5 center p-1' style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-        <img width={100} src={amazonLogo} alt='amazonlogo'/>
+        <a href='/'><img width={100} src={amazonLogo} alt='amazonlogo'/></a>
       </div>
 
       <div className='col-1 p-1'>

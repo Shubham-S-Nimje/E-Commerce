@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import ContectData from '../Store/ContectData';
 import Modal from 'react-bootstrap/Modal';
+import { Link } from 'react-router-dom';
 
 const Productslist = (props) => {
     const cartctx = useContext(ContectData) 
@@ -30,18 +31,21 @@ const Productslist = (props) => {
     }
 
   return (
-    <div className="row p-0 m-0">
-      <img className="p-0 m-0" src={props.imageUrl} alt={props.title} />
+    <div className="row p-0 m-0 rounded card">
+      <Link to={`/productpage/${props.id}`}  className="p-0 m-0 text-decoration-none text-dark">
+      <img className="w-100 p-2 m-0 rounded" src={props.imageUrl} alt={props.title} />
       <div className="p-2 text-center">
-        <h6>{props.title}</h6>
-        <h5>Rs.{price}/-</h5>
-        <button
+        <h6 className='text-truncate'>{props.title}</h6>
+        <h5 className='text-danger'>Rs.{price}/-</h5>
+      </div>
+      </Link>
+
+      <button
           onClick={AddToCartHandler}
-          className="btn btn-warning m-2"
+          className="btn btn-warning m-0"
         >
           Add to Cart
         </button>
-      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

@@ -84,8 +84,12 @@ const ContextProvider = (props) => {
     removeItem:RemovefromcartHandler
     }
 
+    const showitem = (data) => {
+      console.log(data)
+   }
+
   return (
-    <ContectData.Provider value={CartContext}>
+    <ContectData.Provider value={CartContext} showitem={showitem}>
       {props.children}
     </ContectData.Provider>
   )

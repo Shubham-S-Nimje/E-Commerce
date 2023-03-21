@@ -7,16 +7,16 @@ const NavbarRight = () => {
   
   return (
     <section className='row'>
-      <div className='col-1 p-1'>
-        <FaFlag/>
+      <div className='col-2 p-1'>
+        <FaFlag/> Ind
       </div>
 
-      <div className='col-5 px-3'>
+      <div className='col-4 px-3'>
       <span className='row'>
       Hello, sign in
       </span>
       <span className='row'>
-      Account& Lists
+      Account&Lists
       </span>
       </div>
 
