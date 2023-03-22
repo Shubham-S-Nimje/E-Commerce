@@ -30,7 +30,9 @@ const NavbarRight = () => {
               </a>
           )}
       {isLoggedIn && (
+              <a href='/auth'>
               <button className='p-0 m-0 btn btn-dark' onClick={OnLogoutHandler}>Hello, sign out</button>
+              </a>
           )}
       </div>
       
