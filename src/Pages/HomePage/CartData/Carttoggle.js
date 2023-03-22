@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Cartelements from './Cartelements';
 import { FaShoppingCart } from 'react-icons/fa';
-import ContectData from '../Store/ContectData';
+import ContectData from '../../../Components/Store/ContectData';
 
 const Carttoggle = (props) => {
   const cartctx = useContext(ContectData) 

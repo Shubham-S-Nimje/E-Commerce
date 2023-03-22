@@ -45,7 +45,7 @@ const ContactForm = (props) => {
     }
 
   return (
-    <div className="container py-5">
+    <div className="container py-2">
       <div className="row">
         <div className="col-md-8">
           <form onSubmit={OnSubmitHandler}>
@@ -95,7 +95,7 @@ const ContactForm = (props) => {
               <div className="col-md-12">
                 <button
                   type="submit"
-                  className="btn btn-warning"
+                  className="btn btn-warning m-2"
                   id="btnContactUs"
                 >
                   Send Message

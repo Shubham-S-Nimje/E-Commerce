@@ -8,7 +8,7 @@ const Contactus = () => {
 
     const contactusHandler = useCallback(async (user) => {
       try {
-      const response = await fetch('https://react-ecommerce-5db66-default-rtdb.firebaseio.com/user.json', {
+      const response = await fetch('https://react-ecommerce-5db66-default-rtdb.firebaseio.com/contactform.json', {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {

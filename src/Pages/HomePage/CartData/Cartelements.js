@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import ContectData from '../Store/ContectData';
+import ContectData from '../../../Components/Store/ContectData';
 
 const Cartelements = (props) => {
   const cartctx = useContext(ContectData) 

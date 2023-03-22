@@ -1,5 +1,5 @@
 import React from 'react'
-import Carouseldata from '../../Components/CarouselData/Carouseldata';
+import Carouseldata from '../HomePage/CarouselData/Carouseldata';
 import Productsdata from '../../Components/Products/Productsdata';
 
 const Home = () => {

@@ -130,7 +130,7 @@ const StorePage = () => {
 
       <h2 className="bg-dark text-light p-2 mt-2 mb-2 text-center">Products</h2>
       <button
-        className="btn btn-warning mb-2"
+        className="btn btn-warning m-2"
         onClick={RefreshProductsHandler}
       >
         Refresh

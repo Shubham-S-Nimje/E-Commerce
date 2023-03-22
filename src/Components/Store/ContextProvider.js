@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useState } from 'react'
 import ContectData from './ContectData'
 
 const DefaultcartState = {
@@ -66,8 +66,24 @@ const cartReducer = (state, action) => {
 }
 
 const ContextProvider = (props) => {
-
     const [cartState, DispatchcartAction] = useReducer(cartReducer,DefaultcartState)
+    const initialtoken = localStorage.getItem('token')
+    const [token, SetToken] = useState(initialtoken)
+
+    const userLoggedIn = !!token;
+
+    const LoginHandler = (token) => {
+        SetToken(token)
+        localStorage.setItem('token',token)
+        setTimeout(() => {
+            localStorage.setItem('token','')
+        }, 300000);
+    }
+
+    const LogoutHandler = () => {
+        SetToken(null)
+        localStorage.setItem('token','')
+    }
 
     const AddtoCartHandler = (item) => {
         DispatchcartAction({type:'ADD',item:item})
@@ -78,11 +94,15 @@ const ContextProvider = (props) => {
     }
 
     const CartContext = {
-    items:cartState.items,
-    totalAmount:cartState.totalAmount,
-    addItem:AddtoCartHandler,
-    removeItem:RemovefromcartHandler
-    }
+      token: token,
+      isLoggedIn: userLoggedIn,
+      Login: LoginHandler,
+      logout: LogoutHandler,
+      items: cartState.items,
+      totalAmount: cartState.totalAmount,
+      addItem: AddtoCartHandler,
+      removeItem: RemovefromcartHandler,
+    };
 
     const showitem = (data) => {
       console.log(data)

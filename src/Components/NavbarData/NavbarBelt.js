@@ -9,13 +9,13 @@ const NavbarBelt = () => {
   return (
     <Container>
       <div className='row pt-2'>
-        <div className='col-md col-xs-1 m-1'>
+        <div className='col-md col-xs-1'>
         <NavbarLeft/>
         </div>
-        <div className='col-md col-xs-1 m-1'>
+        <div className='col-md col-xs-1'>
         <NavbarMid/>
         </div>
-        <div className='col-md col-xs-1 m-1'>
+        <div className='col-md col-xs-1'>
         <NavbarRight/>
         </div>
       </div>
