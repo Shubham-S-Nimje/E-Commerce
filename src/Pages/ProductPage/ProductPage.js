@@ -1,6 +1,5 @@
-import React, { useContext, useReducer } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import ContectData from '../../Components/Store/ContectData'
+import React from 'react'
+import { useParams } from 'react-router-dom'
 import AuthPage from '../Auth/AuthPage'
 import ProductLeftBar from './ProductLeftBar'
 import ProductMidBar from './ProductMidBar'
@@ -52,7 +51,6 @@ const productsArr = [
   ];
 
 const ProductPage = () => {
-  const redirect = useNavigate()
    const params = useParams();
 
    const newid = `${params.id}`;

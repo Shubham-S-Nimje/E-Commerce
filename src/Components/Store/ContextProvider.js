@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from 'react'
 import ContectData from './ContectData'
 
+
 const DefaultcartState = {
     items:[],
     totalAmount:0,
@@ -74,15 +75,18 @@ const ContextProvider = (props) => {
 
     const LoginHandler = (token) => {
         SetToken(token)
-        localStorage.setItem('token',token)
+        localStorage.setItem('token',token.idToken)
+        localStorage.setItem('userlocalid',token.localId)
         setTimeout(() => {
             localStorage.setItem('token','')
+            localStorage.setItem('userlocalid','')
         }, 300000);
     }
 
     const LogoutHandler = () => {
         SetToken(null)
         localStorage.setItem('token','')
+        localStorage.setItem('userlocalid','')
     }
 
     const AddtoCartHandler = (item) => {
@@ -92,6 +96,7 @@ const ContextProvider = (props) => {
     const RemovefromcartHandler = (id) => {
         DispatchcartAction({type:'REMOVE',id:id})
     }
+    
 
     const CartContext = {
       token: token,

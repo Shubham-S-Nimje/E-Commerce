@@ -11,6 +11,8 @@ const Productslist = (props) => {
 
     const handleClose = () => setShow(false);
 
+    const userlocalid = localStorage.getItem('userlocalid')
+
     const AddToCartHandler = () => {
       setShow(true);
       // console.log('added to cart')
@@ -20,12 +22,31 @@ const Productslist = (props) => {
       // console.log(props.imageUrl)
 
       cartctx.addItem({
+        key: props.id,
         id: props.id,
         title: props.title,
         price: price,
         image: props.imageUrl,
         amount: 1
       })
+
+      fetch(`https://crudcrud.com/api/f6eb9f2bae7848beb7c4846515685306/cart${userlocalid}`,
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        key: props.id,
+        id: props.id,
+        title: props.title,
+        price: price,
+        image: props.imageUrl,
+        amount: 1
+      }),
+      headers: {
+        "Content-Type": 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
 
       // addtocart(props.id,props.title,props.price,props.imageUrl)
     }

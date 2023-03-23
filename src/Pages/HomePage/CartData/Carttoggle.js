@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Cartelements from './Cartelements';
@@ -6,10 +6,15 @@ import { FaShoppingCart } from 'react-icons/fa';
 import ContectData from '../../../Components/Store/ContectData';
 
 const Carttoggle = (props) => {
+  const [APIData, setAPIData] = useState([])
+  const userlocalid = localStorage.getItem('userlocalid')
   const cartctx = useContext(ContectData) 
-  const numberOfCartItemsinCart = cartctx.items.reduce((currentNum, item) => {
+  
+  
+  const numberOfCartItemsinCart = APIData.reduce((currentNum, item) => {
     return currentNum + item.amount
   }, 0)
+
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -23,7 +28,11 @@ const Carttoggle = (props) => {
     cartctx.addItem({ ...item, amount: 1 });
   };
 
-
+  useEffect(() => {
+      fetch(`https://crudcrud.com/api/f6eb9f2bae7848beb7c4846515685306/cart${userlocalid}`)
+    .then(res => res.json())
+    .then(data => setAPIData(data))
+    }, [userlocalid])
 
   return (
     <div>
@@ -51,16 +60,17 @@ const Carttoggle = (props) => {
         <hr />
 
         <Offcanvas.Body>
-          {cartctx.items.map((item) => (
+          {APIData.map((data) => (
             <Cartelements
-              key={item.id}
-              id={item.id}
-              title={item.name}
-              amount={item.amount}
-              price={item.price}
-              image={item.image}
-              onRemove={cartItemRemoveHandler.bind(null, item.id)}
-              onAdd={cartItemAddHandler.bind(null, item)}
+              key={data.key}
+              id={data.id}
+              title={data.title}
+              amount={data.amount}
+              price={data.price}
+              image={data.image}
+              APIData={APIData}
+              onRemove={cartItemRemoveHandler.bind(null, data.id)}
+              onAdd={cartItemAddHandler.bind(null, data)}
             />
           ))}
         </Offcanvas.Body>

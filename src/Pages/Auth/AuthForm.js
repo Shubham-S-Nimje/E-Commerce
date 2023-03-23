@@ -53,7 +53,8 @@ const AuthForm = () => {
           });
         }
       }).then((data) => {
-        authctx.Login(data.idToken);
+        authctx.Login(data)
+        console.log(data);
         navigate('/')
       }).catch(err => {
         alert(err.message);

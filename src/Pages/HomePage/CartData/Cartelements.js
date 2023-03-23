@@ -1,10 +1,7 @@
-import React, { useContext } from 'react'
-import ContectData from '../../../Components/Store/ContectData';
+import React from 'react'
 
-const Cartelements = (props) => {
-  const cartctx = useContext(ContectData) 
-  const hasitems = cartctx.items.length > 0;
-
+const Cartelements = (props) => { 
+  const hasitems = props.APIData.length > 0;
 
   return (
       <div className="row p-0 m-0 text-center">

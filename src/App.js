@@ -7,8 +7,6 @@ import StorePage from './Pages/StorePage/StorePage';
 import Contactus from './Pages/ContactPage/Contactus';
 import ProductPage from './Pages/ProductPage/ProductPage';
 import AuthPage from './Pages/Auth/AuthPage';
-import { useContext } from 'react';
-import ContectData from './Components/Store/ContectData';
 
 const router = createBrowserRouter([
   {path: '/', element: <Home/>},
@@ -19,7 +17,6 @@ const router = createBrowserRouter([
   {path: '/auth', element: <AuthPage/>},
 ])
 function App() {
-  const authCtx = useContext(ContectData);
   return (
     <ContextProvider>
       <NavbarData/>

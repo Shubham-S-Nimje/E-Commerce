@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { FaFlag } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
 import Carttoggle from '../../../Pages/HomePage/CartData/Carttoggle';
 import ContectData from '../../Store/ContectData';
 
