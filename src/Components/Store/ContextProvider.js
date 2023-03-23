@@ -96,7 +96,11 @@ const ContextProvider = (props) => {
     const RemovefromcartHandler = (id) => {
         DispatchcartAction({type:'REMOVE',id:id})
     }
-    
+    // useEffect(() => {
+    //   fetch('https://crudcrud.com/api/4075e82d7d9941969d0f9594c70a6964/enteredemail')
+    // .then(res => res.json())
+    // .then(data => setAPIData(data))
+    // }, [])
 
     const CartContext = {
       token: token,

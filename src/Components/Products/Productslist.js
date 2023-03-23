@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ContectData from '../Store/ContectData';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
@@ -21,16 +21,16 @@ const Productslist = (props) => {
       // console.log(price)
       // console.log(props.imageUrl)
 
-      cartctx.addItem({
-        key: props.id,
-        id: props.id,
-        title: props.title,
-        price: price,
-        image: props.imageUrl,
-        amount: 1
-      })
+      // cartctx.addItem({
+      //   key: props.id,
+      //   id: props.id,
+      //   title: props.title,
+      //   price: price,
+      //   image: props.imageUrl,
+      //   amount: 1
+      // })
 
-      fetch(`https://crudcrud.com/api/f6eb9f2bae7848beb7c4846515685306/cart${userlocalid}`,
+      fetch(`https://crudcrud.com/api/3164aa5957b542afb96b806abeb427de/cart${userlocalid}`,
     {
       method: 'POST',
       body: JSON.stringify({
@@ -49,7 +49,16 @@ const Productslist = (props) => {
     .then(data => console.log(data))
 
       // addtocart(props.id,props.title,props.price,props.imageUrl)
-    }
+
+      setTimeout(() => {
+        fetch(`https://crudcrud.com/api/3164aa5957b542afb96b806abeb427de/cart${userlocalid}`)
+        .then(res => res.json())
+        .then(data => cartctx.addItem(data))
+      }, 1000);
+     
+    
+
+  }
 
   return (
     <div className="row p-0 m-0 rounded card">
