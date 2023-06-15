@@ -62,7 +62,7 @@ const Productslist = (props) => {
 
   return (
     <div className="row p-0 m-0 rounded card">
-      <Link to={`/productpage/${props.id}`}  className="p-0 m-0 text-decoration-none text-dark">
+      <Link to={`/E-Commerce/productpage/${props.id}`}  className="p-0 m-0 text-decoration-none text-dark">
       <img className="w-100 p-2 m-0 rounded" src={props.imageUrl} alt={props.title} />
       <div className="p-2 text-center">
         <h6 className='text-truncate'>{props.title}</h6>

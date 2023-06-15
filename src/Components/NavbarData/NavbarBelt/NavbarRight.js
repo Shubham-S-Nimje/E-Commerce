@@ -24,12 +24,12 @@ const NavbarRight = () => {
       <div className="col-4 p-1">
       <div className='row'>
       {!isLoggedIn && (
-        <a href='/auth' className='text-decoration-none text-white p-0 m-0'>
+        <a href='/E-Commerce/auth' className='text-decoration-none text-white p-0 m-0'>
               <span>Hello, sign in</span>
               </a>
           )}
       {isLoggedIn && (
-              <a href='/auth'>
+              <a href='/E-Commerce/auth'>
               <button className='p-0 m-0 btn btn-dark' onClick={OnLogoutHandler}>Hello, sign out</button>
               </a>
           )}
