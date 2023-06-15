@@ -1,6 +1,10 @@
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel';
-
+import slider1 from '../../../Assets/slider1.jpg'
+import slider2 from '../../../Assets/slider2.jpg'
+import slider3 from '../../../Assets/slider3.jpg'
+import slider4 from '../../../Assets/slider4.jpg'
+import slider5 from '../../../Assets/slider5.jpg'
 
 
 const Carouseldata = () => {
@@ -9,7 +13,7 @@ const Carouseldata = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41FBwjCnS2L._SX1500_.jpg"
+          src={slider1}
           alt="First slide"
         />
       </Carousel.Item>
@@ -17,16 +21,26 @@ const Carouseldata = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/61+t8fT27KL._SX3000_.jpg"
-          alt="Second slide"
+          src={slider2}
+          alt="First slide"
         />
-      </Carousel.Item>
-
-      <Carousel.Item>
+      </Carousel.Item><Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/81X2o7iOt+L._SX3000_.jpg"
-          alt="Third slide"
+          src={slider3}
+          alt="First slide"
+        />
+      </Carousel.Item><Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={slider4}
+          alt="First slide"
+        />
+      </Carousel.Item><Carousel.Item>
+        <img
+          className="d-block w-100"
+          src={slider5}
+          alt="First slide"
         />
       </Carousel.Item>
 

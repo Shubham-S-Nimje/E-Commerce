@@ -30,7 +30,7 @@ const Productslist = (props) => {
       //   amount: 1
       // })
 
-      fetch(`https://crudcrud.com/api/3164aa5957b542afb96b806abeb427de/cart${userlocalid}`,
+      fetch(`https://crudcrud.com/api/c101ccd03474475db93ae2c3bb0345ca/cart${userlocalid}`,
     {
       method: 'POST',
       body: JSON.stringify({
@@ -51,7 +51,7 @@ const Productslist = (props) => {
       // addtocart(props.id,props.title,props.price,props.imageUrl)
 
       setTimeout(() => {
-        fetch(`https://crudcrud.com/api/3164aa5957b542afb96b806abeb427de/cart${userlocalid}`)
+        fetch(`https://crudcrud.com/api/c101ccd03474475db93ae2c3bb0345ca/cart${userlocalid}`)
         .then(res => res.json())
         .then(data => cartctx.addItem(data))
       }, 1000);

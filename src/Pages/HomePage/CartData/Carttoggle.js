@@ -19,7 +19,7 @@ const Carttoggle = (props) => {
 
   const cartItemRemoveHandler = (id,id2) => {
     cartctx.removeItem(id);
-    fetch(`https://crudcrud.com/api/3164aa5957b542afb96b806abeb427de/cart${userlocalid}/${id2}`,
+    fetch(`https://crudcrud.com/api/c101ccd03474475db93ae2c3bb0345ca/cart${userlocalid}/${id2}`,
     {
       method: 'DELETE'
       })
