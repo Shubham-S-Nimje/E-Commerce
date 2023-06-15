@@ -55,7 +55,7 @@ const AuthForm = () => {
       }).then((data) => {
         authctx.Login(data)
         console.log(data);
-        navigate('/')
+        navigate('/E-Commerce/')
       }).catch(err => {
         alert(err.message);
       });

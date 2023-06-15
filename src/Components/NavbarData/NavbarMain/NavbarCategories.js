@@ -13,7 +13,7 @@ const NavbarCategories = () => {
             className="me-auto my-2 my-lg-0"
             navbarScroll
           >
-            <Nav.Link href="/E-Commerce/">Home</Nav.Link>
+            <Nav.Link href="/E-Commerce">Home</Nav.Link>
             <Nav.Link href="/E-Commerce/store">Store</Nav.Link>
             <Nav.Link href="/E-Commerce/about">About</Nav.Link>
             <NavDropdown title="Dropdown" id="navbarScrollingDropdown">
