@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 const ContectData = React.createContext({
-    token: '',
-    isLoggedIn: false,
-    Login: (token) => {},
-    logout: () => {},
-    items:[],
-    totalAmount:0,
-    addItem: (item) => {},
-    removeItem: (id) => {}
+  token: '',
+  isLoggedIn: false,
+  login: (token) => {},
+  logout: () => {},
+  cartItems: [],
+  totalAmount: 0,
+  addToCart: (item) => {},
+  removeFromCart: (id) => {},
 });
 
 export default ContectData;

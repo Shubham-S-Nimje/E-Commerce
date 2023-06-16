@@ -4,7 +4,7 @@ import ContectData from '../../../Components/Store/ContectData';
 const Cartelements = (props) => {
   const cartctx = useContext(ContectData) 
   const hasitems = cartctx.items.length > 0;
-  console.log(cartctx)
+  // console.log(cartctx)
 
 
   return (

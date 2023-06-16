@@ -1,127 +1,134 @@
-import React, { useReducer, useState } from 'react'
-import ContectData from './ContectData'
+import React, { useReducer, useState, useEffect } from 'react';
+import ContectData from './ContectData';
 
-
-const DefaultcartState = {
-    items:[],
-    totalAmount:0,
-}
+const DefaultCartState = {
+  items: [],
+  totalAmount: 0,
+};
 
 const cartReducer = (state, action) => {
-    if(action.type === 'ADD')
-    {
-        const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount
-        // const updatedItems = state.items.concat(action.item)
+  if (action.type === 'ADD') {
+    const updatedTotalAmount =
+      state.totalAmount + action.item.price * action.item.amount;
 
-        const exsistingCartItemsIndex = state.items.findIndex(
-            (item) => item.id === action.item.id);
-            
-            const existingcartitem = state.items[exsistingCartItemsIndex]
-            let updatedItems;
-      
-            if(existingcartitem) {
-              const updatedItem = {
-                ...existingcartitem,
-                amount: existingcartitem.amount + action.item.amount
-              }
-      
-              updatedItems = [...state.items];
-              updatedItems[exsistingCartItemsIndex] = updatedItem;
-            }
-            else {
-              updatedItems = state.items.concat(action.item);
-            }
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.item.id
+    );
 
-        return {
-            items: updatedItems,
-            totalAmount: updatedTotalAmount
-        }
+    const existingCartItem = state.items[existingCartItemIndex];
+    let updatedItems;
+
+    if (existingCartItem) {
+      const updatedItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount + action.item.amount,
+      };
+
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
+    } else {
+      updatedItems = state.items.concat(action.item);
     }
 
-    if(action.type === 'REMOVE')
-    {
-    const exsistingCartItemsIndex = state.items.findIndex(
-        (item) => item.id === action.id
-      );
-      const existingcartitem = state.items[exsistingCartItemsIndex];
-      const updatedtotalAmount = state.totalAmount - existingcartitem.price;
-  
-      let updatedItems;
-      if(existingcartitem.amount === 1)
-      {
-        updatedItems = state.items.filter(item => item.id !== action.id)
-      }
-      else {
-        const updatedItem = {...existingcartitem, amount: existingcartitem.amount - 1}
-        updatedItems = [...state.items];
-        updatedItems[exsistingCartItemsIndex] = updatedItem;
-      }
-  
-      return {
-        items : updatedItems,
-        totalAmount: updatedtotalAmount
-      }
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
+  if (action.type === 'REMOVE') {
+    const existingCartItemIndex = state.items.findIndex(
+      (item) => item.id === action.id
+    );
+    const existingCartItem = state.items[existingCartItemIndex];
+    const updatedTotalAmount = state.totalAmount - existingCartItem.price;
+
+    let updatedItems;
+    if (existingCartItem.amount === 1) {
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+    } else {
+      const updatedItem = {
+        ...existingCartItem,
+        amount: existingCartItem.amount - 1,
+      };
+      updatedItems = [...state.items];
+      updatedItems[existingCartItemIndex] = updatedItem;
     }
 
-    return DefaultcartState;
-}
+    return {
+      items: updatedItems,
+      totalAmount: updatedTotalAmount,
+    };
+  }
+
+  if (action.type === 'REPLACE') {
+    return action.cartData;
+  }
+
+  return state;
+};
 
 const ContextProvider = (props) => {
-    const [cartState, DispatchcartAction] = useReducer(cartReducer,DefaultcartState)
-    const initialtoken = localStorage.getItem('token')
-    const [token, SetToken] = useState(initialtoken)
+  const [cartState, dispatchCartAction] = useReducer(
+    cartReducer,
+    DefaultCartState
+  );
+  const initialToken = localStorage.getItem('token');
+  const [token, setToken] = useState(initialToken);
 
-    const userLoggedIn = !!token;
+  const userLoggedIn = !!token;
 
-    const LoginHandler = (token) => {
-        SetToken(token)
-        localStorage.setItem('token',token.idToken)
-        localStorage.setItem('userlocalid',token.localId)
-        setTimeout(() => {
-            localStorage.setItem('token','')
-            localStorage.setItem('userlocalid','')
-        }, 300000);
+  const loginHandler = (token) => {
+    setToken(token);
+    localStorage.setItem('token', token.idToken);
+    localStorage.setItem('userlocalid', token.localId);
+    setTimeout(() => {
+      localStorage.setItem('token', '');
+      localStorage.setItem('userlocalid', '');
+    }, 300000);
+  };
+
+  const logoutHandler = () => {
+    setToken(null);
+    localStorage.setItem('token', '');
+    localStorage.setItem('userlocalid', '');
+  };
+
+  const addToCartHandler = (item) => {
+    dispatchCartAction({ type: 'ADD', item: item });
+  };
+
+  const removeFromCartHandler = (id) => {
+    dispatchCartAction({ type: 'REMOVE', id: id });
+  };
+
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem('cart'));
+    if (storedCart && storedCart.items.length > 0) {
+      dispatchCartAction({ type: 'REPLACE', cartData: storedCart });
     }
+  }, []);
 
-    const LogoutHandler = () => {
-        SetToken(null)
-        localStorage.setItem('token','')
-        localStorage.setItem('userlocalid','')
-    }
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartState));
+  }, [cartState]);
 
-    const AddtoCartHandler = (item) => {
-        DispatchcartAction({type:'ADD',item:item})
-    }
-
-    const RemovefromcartHandler = (id) => {
-        DispatchcartAction({type:'REMOVE',id:id})
-    }
-    // useEffect(() => {
-    //   fetch('https://crudcrud.com/api/4075e82d7d9941969d0f9594c70a6964/enteredemail')
-    // .then(res => res.json())
-    // .then(data => setAPIData(data))
-    // }, [])
-
-    const CartContext = {
-      token: token,
-      isLoggedIn: userLoggedIn,
-      Login: LoginHandler,
-      logout: LogoutHandler,
-      items: cartState.items,
-      totalAmount: cartState.totalAmount,
-      addItem: AddtoCartHandler,
-      removeItem: RemovefromcartHandler,
-    };
-
-    const showitem = (data) => {
-      console.log(data)
-   }
+  const cartContext = {
+    token: token,
+    isLoggedIn: userLoggedIn,
+    login: loginHandler,
+    logout: logoutHandler,
+    items: cartState.items,
+    totalAmount: cartState.totalAmount,
+    addItem: addToCartHandler,
+    removeItem: removeFromCartHandler,
+  };
 
   return (
-    <ContectData.Provider value={CartContext} showitem={showitem}>
+    <ContectData.Provider value={cartContext}>
       {props.children}
     </ContectData.Provider>
-  )
-}
+  );
+};
 
-export default ContextProvider
+export default ContextProvider;

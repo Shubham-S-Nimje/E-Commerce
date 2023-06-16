@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import ContectData from '../Store/ContectData';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from 'react-router-dom';
+import { NavItem } from 'react-bootstrap';
 
 const Productslist = (props) => {
     const cartctx = useContext(ContectData) 
+    const additemtocart = cartctx.addItem
+
     const price = `${props.price.toFixed(2)}`;
 
     const [show, setShow] = useState(false);
@@ -12,6 +15,15 @@ const Productslist = (props) => {
     const handleClose = () => setShow(false);
 
     const userlocalid = localStorage.getItem('userlocalid')
+
+    const item = {
+      key: props.id,
+        id: props.id,
+        title: props.title,
+        price: price,
+        image: props.imageUrl,
+        amount: 1
+    }
 
     const AddToCartHandler = () => {
       setShow(true);
@@ -21,14 +33,7 @@ const Productslist = (props) => {
       // console.log(price)
       // console.log(props.imageUrl)
 
-      // cartctx.addItem({
-      //   key: props.id,
-      //   id: props.id,
-      //   title: props.title,
-      //   price: price,
-      //   image: props.imageUrl,
-      //   amount: 1
-      // })
+      additemtocart(item)
 
       fetch(`https://crudcrud.com/api/c101ccd03474475db93ae2c3bb0345ca/cart${userlocalid}`,
     {
