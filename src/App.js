@@ -22,7 +22,7 @@ function App() {
           <Route path="/E-Commerce/contactus" component={Contactus} />
           <Route path="/E-Commerce/productpage/:id" component={ProductPage} />
           <Route path="/E-Commerce/auth" component={AuthPage} />
-          <Route component={NotFound} />
+          <Route path="*"component={NotFound} />
         </Switch>
         <footer />
       </Router>
