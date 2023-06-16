@@ -71,7 +71,8 @@ const Productslist = (props) => {
       <img className="w-100 p-2 m-0 rounded" src={props.imageUrl} alt={props.title} />
       <div className="p-2 text-center">
         <h6 className='text-truncate'>{props.title}</h6>
-        <h5 className='text-danger'>Rs.{price}/-</h5>
+        {/* <h5>{`${props.rating.rate}star rating from${props.rating.count}`}</h5> */}
+        <h5 className='text-danger'>Rs.{props.price}/-</h5>
       </div>
       </Link>
 
