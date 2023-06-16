@@ -32,7 +32,7 @@ const Productsdata = () => {
             title={products.title}
             imageUrl={products.image}
             rating={products.rating}
-            price={products.price*80}>
+            price={products.price}>
             </Productslist>
           </Card>
         );

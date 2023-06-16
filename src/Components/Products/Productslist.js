@@ -95,7 +95,7 @@ const Productslist = (props) => {
           />
           <div className="col p-2">
             <h6>{props.title}</h6>
-            <h5>Rs.{price}/-</h5>
+            <h5>Rs.{props.price}/-</h5>
           </div>
         </Modal.Body>
       </Modal>
