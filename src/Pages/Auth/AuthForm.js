@@ -55,7 +55,7 @@ const AuthForm = () => {
         }
       }).then((data) => {
         authctx.login(data)
-        console.log(data);
+        // console.log(data);
         // navigate('/E-Commerce/')
         history.push('/E-Commerce');
       }).catch(err => {
