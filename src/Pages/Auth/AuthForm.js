@@ -54,7 +54,7 @@ const AuthForm = () => {
           });
         }
       }).then((data) => {
-        authctx.Login(data)
+        authctx.login(data)
         console.log(data);
         // navigate('/E-Commerce/')
         history.push('/E-Commerce');
