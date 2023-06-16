@@ -9,9 +9,7 @@ const AuthPage = () => {
         <div className="col-12 col-md-9 col-lg-7 col-xl-6">
           <div className="card">
             <div className="p-5">
-
               <SignupForm/>
-
             </div>
           </div>
         </div>
