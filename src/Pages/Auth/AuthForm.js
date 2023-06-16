@@ -1,7 +1,7 @@
 import React, { useContext, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import ContectData from "../../Components/Store/ContectData";
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const AuthForm = () => {
   const emailinput = useRef();
@@ -9,7 +9,8 @@ const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [isloading, Setisloading] = useState(false);
   const authctx = useContext(ContectData);
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const history = useHistory();
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -55,7 +56,8 @@ const AuthForm = () => {
       }).then((data) => {
         authctx.Login(data)
         console.log(data);
-        navigate('/E-Commerce/')
+        // navigate('/E-Commerce/')
+        history.push('/E-Commerce');
       }).catch(err => {
         alert(err.message);
       });

@@ -1,40 +1,31 @@
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavbarData from './Components/NavbarData/NavbarData';
 import ContextProvider from './Components/Store/ContextProvider';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import About from './Pages/AboutPage/About';
 import Home from './Pages/HomePage/Home';
 import StorePage from './Pages/StorePage/StorePage';
 import Contactus from './Pages/ContactPage/Contactus';
 import ProductPage from './Pages/ProductPage/ProductPage';
 import AuthPage from './Pages/Auth/AuthPage';
+import NotFound from './Pages/NotFound';
+import { Switch } from 'react-router-dom';
 
-const router = createBrowserRouter([
-  {path: '/E-Commerce', element: <Home/>},
-  {path: '/E-Commerce/about', element: <About/>},
-  {path: '/E-Commerce/store', element: <StorePage/>},
-  {path: '/E-Commerce/contactus', element: <Contactus/>},
-  {path: '/E-Commerce/productpage/:id', element: <ProductPage/>},
-  {path: '/E-Commerce/auth', element: <AuthPage/>},
-])
-// const router = createBrowserRouter([
-//   {path: '/', element: <Home/>},
-//   {path: '/about', element: <About/>},
-//   {path: '/store', element: <StorePage/>},
-//   {path: '/contactus', element: <Contactus/>},
-//   {path: '/productpage/:id', element: <ProductPage/>},
-//   {path: '/auth', element: <AuthPage/>},
-// ])
 function App() {
   return (
     <ContextProvider>
-      <NavbarData/>
-      <RouterProvider router={router}/>
-
-      {/* <Route path="/contactus">
-        <Contactus/>
-      </Route> */}
-
-      <footer/>
+      <Router>
+        <NavbarData />
+        <Switch>
+          <Route exact path="/E-Commerce" component={Home} />
+          <Route path="/E-Commerce/about" component={About} />
+          <Route path="/E-Commerce/store" component={StorePage} />
+          <Route path="/E-Commerce/contactus" component={Contactus} />
+          <Route path="/E-Commerce/productpage/:id" component={ProductPage} />
+          <Route path="/E-Commerce/auth" component={AuthPage} />
+          <Route component={NotFound} />
+        </Switch>
+        <footer />
+      </Router>
     </ContextProvider>
   );
 }
