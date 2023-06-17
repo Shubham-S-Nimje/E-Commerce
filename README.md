@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+<div align="center">
+<img src="https://shubham.nimje.co.in/p3.jpg" align="center" height="" width="500" />
+</div>  
+  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Amazon clone
+  
+  
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+### Web Application  
+- Developed an Amazon clone using React.js and Bootstrap for front end.
+Context API for storing data, firebase authentication to ensure user security .
+Fake Store API to display products, crud crud for cart control.
+React Router for page navigation , GitHub for version control, Firebase.  
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br/>  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+ 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>  
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Languages and Tools  
+<div align="center">  
+<a href="https://en.wikipedia.org/wiki/HTML5" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" alt="HTML5" height="25" /></a>  
+<a href="https://www.javascript.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/javascript-original.svg" alt="JavaScript" height="25" /></a>  
+<a href="https://github.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" alt="Git" height="25" /></a>  
+<a href="https://firebase.google.com/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/firebase.png" alt="Firebase" height="25" /></a>  
+<a href="https://redux.js.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/redux-original.svg" alt="Redux" height="25" /></a>  
+<a href="https://reactjs.org/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" alt="React" height="25" /></a>  
+<a href="https://getbootstrap.com/docs/3.4/javascript/" target="_blank"><img style="margin: 10px" src="https://profilinator.rishav.dev/skills-assets/bootstrap-plain.svg" alt="Bootstrap" height="25" /></a>  
+</div>  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br/>  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Github Stats  
+<table><tr><td valign="top" width="50%">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<div align="center"><img src="https://github-readme-stats.vercel.app/api?username=Shubham-S-Nimje&show_icons=true&count_private=true&hide_border=true" align="center" style="width: 100%" /></div>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</td><td valign="top" width="50%">
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Shubham-S-Nimje&hide_border=true&layout=compact" align="left" style="width: 100%" />
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+</td></tr></table>  
 
-## Learn More
+<br/>  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br/>  
 
-### Code Splitting
+![Profile views counter](https://komarev.com/ghpvc/?username=Shubham-S-Nimje&&style=flat-square)  
+  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br/>  
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<br />
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+----
+<div align="center">Copyright © 2023 NIMJE
+Designed by <a href="https://shubham.nimje.co.in/" target="_blank">Shubham S Nimje</a></div>
